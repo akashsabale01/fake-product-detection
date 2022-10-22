@@ -5,8 +5,6 @@ import {
   Avatar,
   Typography,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Button,
   Link,
   Stack,
@@ -44,18 +42,11 @@ const SignIn = () => {
             </Avatar>
 
             <Typography variant="h5" gutterBottom sx={{ fontWeight: "600" }}>
-              Sign In
+              Login
             </Typography>
           </Grid>
 
           <TextField label="Username" variant="outlined" fullWidth />
-
-          {/* <TextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            fullWidth
-          /> */}
 
           <TextField
             label="Password"
@@ -63,21 +54,19 @@ const SignIn = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  {viewer ? (
+                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                  ) : (
+                    <VisibilityIcon sx={{ cursor: "pointer" }} />
+                  )}
                 </InputAdornment>
               ),
             }}
             fullWidth
           />
 
-          <FormControlLabel
-            control={<Checkbox sx={{ paddingLeft: "0" }} />}
-            label="Remember Me"
-            fullWidth
-          />
-
           <Button type="submit" color="primary" variant="contained" fullWidth>
-            Sign In
+            Login
           </Button>
 
           <Typography>
@@ -89,7 +78,7 @@ const SignIn = () => {
           <Typography>
             Don't have an account?{" "}
             <Link href="/signup" underline="hover">
-              Sign Up
+              Create Acoount
             </Link>
           </Typography>
         </Stack>

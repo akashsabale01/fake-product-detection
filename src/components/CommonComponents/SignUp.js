@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import {
   Grid,
   Paper,
@@ -8,9 +8,12 @@ import {
   Button,
   Link,
   Stack,
+  InputAdornment,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 const useStyles = makeStyles({
   paperStyle: {
@@ -24,6 +27,11 @@ const useStyles = makeStyles({
 const SignUp = () => {
   const classes = useStyles();
 
+  const [viewer, setViewer] = useState(false);
+  const handleVisibility = () => {
+    setViewer((prev) => !prev);
+  };
+
   return (
     <Grid>
       <Paper elevation={10} className={classes.paperStyle}>
@@ -34,7 +42,7 @@ const SignUp = () => {
             </Avatar>
 
             <Typography variant="h5" gutterBottom sx={{ fontWeight: "600" }}>
-              Sign Up
+              Create Account
             </Typography>
           </Grid>
 
@@ -46,19 +54,29 @@ const SignUp = () => {
 
           <TextField
             label="Password"
-            variant="outlined"
-            type="password"
+            type={viewer ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end" onClick={handleVisibility}>
+                  {viewer ? (
+                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                  ) : (
+                    <VisibilityIcon sx={{ cursor: "pointer" }} />
+                  )}
+                </InputAdornment>
+              ),
+            }}
             fullWidth
           />
 
           <Button type="submit" color="primary" variant="contained" fullWidth>
-            Sign Up
+            Create Account
           </Button>
 
           <Typography>
             Already Registered?{" "}
             <Link href="/signin" underline="hover">
-              Sign In
+              Login
             </Link>
           </Typography>
         </Stack>

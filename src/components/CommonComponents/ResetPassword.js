@@ -52,7 +52,11 @@ const ResetPassword = () => {
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  {viewer ? (
+                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                  ) : (
+                    <VisibilityIcon sx={{ cursor: "pointer" }} />
+                  )}
                 </InputAdornment>
               ),
             }}
