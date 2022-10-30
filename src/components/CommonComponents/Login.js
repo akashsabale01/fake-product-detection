@@ -46,28 +46,37 @@ const Login = () => {
             </Typography>
           </Grid>
 
-          <TextField label="Username" variant="outlined" fullWidth />
+          <form>
+            <Stack spacing={2}>
+              <TextField label="Username" variant="outlined" fullWidth />
 
-          <TextField
-            label="Password"
-            type={viewer ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? (
-                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
-                  ) : (
-                    <VisibilityIcon sx={{ cursor: "pointer" }} />
-                  )}
-                </InputAdornment>
-              ),
-            }}
-            fullWidth
-          />
+              <TextField
+                label="Password"
+                type={viewer ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end" onClick={handleVisibility}>
+                      {viewer ? (
+                        <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                      ) : (
+                        <VisibilityIcon sx={{ cursor: "pointer" }} />
+                      )}
+                    </InputAdornment>
+                  ),
+                }}
+                fullWidth
+              />
 
-          <Button type="submit" color="primary" variant="contained" fullWidth>
-            Login
-          </Button>
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                fullWidth
+              >
+                Login
+              </Button>
+            </Stack>
+          </form>
 
           <Typography>
             <Link href="/forgetpassword" underline="hover">

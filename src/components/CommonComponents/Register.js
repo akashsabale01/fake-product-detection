@@ -46,32 +46,41 @@ const Register = () => {
             </Typography>
           </Grid>
 
-          <TextField label="Company Name" variant="outlined" fullWidth />
-          <TextField label="Company Address" variant="outlined" fullWidth />
-          <TextField label="Company GST No" variant="outlined" fullWidth />
-          <TextField label="Company Mail" variant="outlined" fullWidth />
-          <TextField label="Username" variant="outlined" fullWidth />
+          <form>
+            <Stack spacing={1.5}>
+              <TextField label="Company Name" variant="outlined" fullWidth />
+              <TextField label="Company Address" variant="outlined" fullWidth />
+              <TextField label="Company GST No" variant="outlined" fullWidth />
+              <TextField label="Company Mail" variant="outlined" fullWidth />
+              <TextField label="Username" variant="outlined" fullWidth />
 
-          <TextField
-            label="Password"
-            type={viewer ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? (
-                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
-                  ) : (
-                    <VisibilityIcon sx={{ cursor: "pointer" }} />
-                  )}
-                </InputAdornment>
-              ),
-            }}
-            fullWidth
-          />
+              <TextField
+                label="Password"
+                type={viewer ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end" onClick={handleVisibility}>
+                      {viewer ? (
+                        <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                      ) : (
+                        <VisibilityIcon sx={{ cursor: "pointer" }} />
+                      )}
+                    </InputAdornment>
+                  ),
+                }}
+                fullWidth
+              />
 
-          <Button type="submit" color="primary" variant="contained" fullWidth>
-            Create Account
-          </Button>
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                fullWidth
+              >
+                Create Account
+              </Button>
+            </Stack>
+          </form>
 
           <Typography>
             Already Registered?{" "}
