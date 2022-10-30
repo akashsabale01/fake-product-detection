@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-const SignUp = () => {
+const Register = () => {
   const classes = useStyles();
 
   const [viewer, setViewer] = useState(false);
@@ -75,7 +75,7 @@ const SignUp = () => {
 
           <Typography>
             Already Registered?{" "}
-            <Link href="/signin" underline="hover">
+            <Link href="/login" underline="hover">
               Login
             </Link>
           </Typography>
@@ -85,4 +85,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
