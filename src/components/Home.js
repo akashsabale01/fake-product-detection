@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Button } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import FactoryIcon from "@mui/icons-material/Factory";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -51,6 +51,15 @@ const Home = () => {
           cardText="Customer"
           cardLink="/customer"
         />
+      </Grid>
+
+      <Grid container justifyContent="center" alignItems="center">
+        <Button variant="contained" sx={{ m: 1, my: 3 }} href="/login">
+          Login
+        </Button>
+        <Button variant="contained" sx={{ m: 1 }} href="/register">
+          Register
+        </Button>
       </Grid>
     </div>
   );
