@@ -8,7 +8,11 @@ import DashboardCard from "./DashboardCard";
 const Home = () => {
   return (
     <div>
-      <Typography variant="h2" marginTop={3} align="center">
+      <Typography
+        sx={{ typography: { xs: "h4", sm: "h3", md: "h2" } }}
+        marginTop={3}
+        align="center"
+      >
         Blockchain Powered Supply Chain
       </Typography>
 
