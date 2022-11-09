@@ -8,7 +8,13 @@ import DashboardCard from "../DashboardCard";
 const Manufacturer = () => {
   return (
     <div>
-      <Typography variant="h2" marginY={4} align="center" gutterBottom>
+      <Typography
+        variant="h2"
+        marginY={4}
+        align="center"
+        sx={{ typography: { xs: "h4", sm: "h3", md: "h2" } }}
+        gutterBottom
+      >
         Manufacturer Dashboard
       </Typography>
 
