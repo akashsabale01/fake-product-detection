@@ -17,7 +17,7 @@ const DashboardCard = (props) => {
       >
         <span>{props.cardIcon}</span>
 
-        <Typography variant="h6" styles={{ textAlign: "center" }}>
+        <Typography variant="h6" align="center">
           {props.cardText}
         </Typography>
 
