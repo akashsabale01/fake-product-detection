@@ -87,7 +87,7 @@ const Login = () => {
           <Typography>
             Don't have an account?{" "}
             <Link href="/register" underline="hover">
-              Create Acoount
+              Create Account
             </Link>
           </Typography>
         </Stack>
