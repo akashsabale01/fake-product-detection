@@ -27,9 +27,34 @@ const useStyles = makeStyles({
 const Register = () => {
   const classes = useStyles();
 
-  const [viewer, setViewer] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleVisibility = () => {
-    setViewer((prev) => !prev);
+    setShowPassword((prev) => !prev);
+  };
+
+  const registerFormInitState = {
+    companyName: "",
+    companyAddress: "",
+    companyGstNo: "",
+    companyMail: "",
+    username: "",
+    password: "",
+  };
+
+  const [registerFormState, setRegisterFormState] = useState(
+    registerFormInitState
+  );
+
+  const handleChange = (e) => {
+    setRegisterFormState({
+      ...registerFormState,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleRegister = (e) => {
+    e.preventDefault();
+    console.log("form values", registerFormState);
+    // API call here- register
   };
 
   return (
@@ -46,21 +71,63 @@ const Register = () => {
             </Typography>
           </Grid>
 
-          <form>
+          <form onSubmit={handleRegister}>
             <Stack spacing={1.5}>
-              <TextField label="Company Name" variant="outlined" fullWidth />
-              <TextField label="Company Address" variant="outlined" fullWidth />
-              <TextField label="Company GST No" variant="outlined" fullWidth />
-              <TextField label="Company Mail" variant="outlined" fullWidth />
-              <TextField label="Username" variant="outlined" fullWidth />
+              <TextField
+                name="companyName"
+                value={registerFormState.companyName}
+                onChange={handleChange}
+                label="Company Name"
+                variant="outlined"
+                fullWidth
+              />
 
               <TextField
+                name="companyAddress"
+                value={registerFormState.companyAddress}
+                onChange={handleChange}
+                label="Company Address"
+                variant="outlined"
+                fullWidth
+              />
+
+              <TextField
+                name="companyGstNo"
+                value={registerFormState.companyGstNo}
+                onChange={handleChange}
+                label="Company GST No"
+                variant="outlined"
+                fullWidth
+              />
+
+              <TextField
+                name="companyMail"
+                value={registerFormState.companyMail}
+                onChange={handleChange}
+                label="Company Mail"
+                variant="outlined"
+                fullWidth
+              />
+
+              <TextField
+                name="username"
+                value={registerFormState.username}
+                onChange={handleChange}
+                label="Username"
+                variant="outlined"
+                fullWidth
+              />
+
+              <TextField
+                name="password"
+                value={registerFormState.password}
+                onChange={handleChange}
                 label="Password"
-                type={viewer ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end" onClick={handleVisibility}>
-                      {viewer ? (
+                      {showPassword ? (
                         <VisibilityOffIcon sx={{ cursor: "pointer" }} />
                       ) : (
                         <VisibilityIcon sx={{ cursor: "pointer" }} />
