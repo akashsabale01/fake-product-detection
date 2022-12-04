@@ -27,9 +27,23 @@ const useStyles = makeStyles({
 const Login = () => {
   const classes = useStyles();
 
-  const [viewer, setViewer] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleVisibility = () => {
-    setViewer((prev) => !prev);
+    setShowPassword((prev) => !prev);
+  };
+
+  const loginFormInitState = { username: "", password: "" };
+
+  const [loginFormState, setLoginFormState] = useState(loginFormInitState);
+
+  const handleChange = (e) => {
+    setLoginFormState({ ...loginFormState, [e.target.name]: e.target.value });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("form values", loginFormState);
+    // API call here- login
   };
 
   return (
@@ -46,17 +60,27 @@ const Login = () => {
             </Typography>
           </Grid>
 
-          <form>
+          <form onSubmit={handleLogin}>
             <Stack spacing={2}>
-              <TextField label="Username" variant="outlined" fullWidth />
+              <TextField
+                name="username"
+                value={loginFormState.username}
+                onChange={handleChange}
+                label="Username"
+                variant="outlined"
+                fullWidth
+              />
 
               <TextField
+                name="password"
+                value={loginFormState.password}
+                onChange={handleChange}
                 label="Password"
-                type={viewer ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end" onClick={handleVisibility}>
-                      {viewer ? (
+                      {showPassword ? (
                         <VisibilityOffIcon sx={{ cursor: "pointer" }} />
                       ) : (
                         <VisibilityIcon sx={{ cursor: "pointer" }} />

@@ -24,55 +24,82 @@ const useStyles = makeStyles({
 const ResetPassword = () => {
   const classes = useStyles();
 
-  const [viewer, setViewer] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleVisibility = () => {
-    setViewer((prev) => !prev);
+    setShowPassword((prev) => !prev);
+  };
+
+  const resetPasswordFormInitState = { password: "", confirmPassword: "" };
+
+  const [resetPasswordState, setResetPasswordState] = useState(
+    resetPasswordFormInitState
+  );
+
+  const handleChange = (e) => {
+    setResetPasswordState({
+      ...resetPasswordState,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    console.log("form values", resetPasswordState);
+    // API call here- reset password
   };
 
   return (
     <Grid>
       <Paper elevation={10} className={classes.paperStyle}>
-        <Stack spacing={3}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            align="center"
-            sx={{ fontWeight: "600" }}
-          >
-            Reset Password
-          </Typography>
+        <form onSubmit={handleResetPassword}>
+          <Stack spacing={3}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              align="center"
+              sx={{ fontWeight: "600" }}
+            >
+              Reset Password
+            </Typography>
 
-          <Typography variant="body1" gutterBottom>
-            Your new password must be different from previous used passwords.
-          </Typography>
+            <Typography variant="body1" gutterBottom>
+              Your new password must be different from previous used passwords.
+            </Typography>
 
-          <TextField
-            label="Password"
-            type={viewer ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end" onClick={handleVisibility}>
-                  {viewer ? (
-                    <VisibilityOffIcon sx={{ cursor: "pointer" }} />
-                  ) : (
-                    <VisibilityIcon sx={{ cursor: "pointer" }} />
-                  )}
-                </InputAdornment>
-              ),
-            }}
-            fullWidth
-          />
+            <TextField
+              name="password"
+              value={resetPasswordState.password}
+              onChange={handleChange}
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end" onClick={handleVisibility}>
+                    {showPassword ? (
+                      <VisibilityOffIcon sx={{ cursor: "pointer" }} />
+                    ) : (
+                      <VisibilityIcon sx={{ cursor: "pointer" }} />
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              fullWidth
+            />
 
-          <TextField
-            label="Confirm Password"
-            type={viewer ? "text" : "password"}
-            fullWidth
-          />
+            <TextField
+              name="confirmPassword"
+              value={resetPasswordState.confirmPassword}
+              onChange={handleChange}
+              label="Confirm Password"
+              type={showPassword ? "text" : "password"}
+              fullWidth
+            />
 
-          <Button type="submit" color="primary" variant="contained" fullWidth>
-            Reset Password
-          </Button>
-        </Stack>
+            <Button type="submit" color="primary" variant="contained" fullWidth>
+              Reset Password
+            </Button>
+          </Stack>
+        </form>
       </Paper>
     </Grid>
   );
